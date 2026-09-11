@@ -50,7 +50,7 @@
 
   <div class="footer">
     <span>Dashboard v2 • URL tetap sama untuk 2026, 2027, dan seterusnya.</span>
-    <span class="legend"><span class="dot green">Ongoing</span><span class="dot blue">Upcoming</span><span class="dot gray">Completed</span><span class="dot red">Canceled</span></span>
+    <span class="legend"><span class="dot green">Current</span><span class="dot blue">Future</span><span class="dot gray">Past</span><span class="dot red">Canceled</span></span>
   </div>
 </div>
 <script>
@@ -68,8 +68,8 @@ const today=new Date(); today.setHours(12,0,0,0);
 const years=[...new Set([2026,2027,...events.map(e=>e.year)])].sort();
 
 function dateObj(s,end=false){if(!s)return null;const d=new Date(s+'T12:00:00');if(end)d.setHours(23,59,59,999);return d}
-function statusOf(e){if(e.canceled)return 'canceled';const s=dateObj(e.start),en=dateObj(e.end||e.start,true);if(today<s)return 'upcoming';if(today>en)return 'completed';return e.end?'ongoing':'ongoing'}
-function statusLabel(s){return ({ongoing:'ONGOING',upcoming:'UPCOMING',completed:'COMPLETED',canceled:'CANCELED'})[s]}
+function statusOf(e){if(e.canceled)return 'canceled';const s=dateObj(e.start),en=dateObj(e.end||e.start,true);if(today<s)return 'upcoming';if(today>en)return 'completed';return 'ongoing'}
+function statusLabel(s){return ({ongoing:'CURRENT',upcoming:'FUTURE',completed:'PAST',canceled:'CANCELED'})[s]}
 function countdown(e){const s=dateObj(e.start),en=dateObj(e.end||e.start,true),sval=statusOf(e);if(sval==='canceled')return 'Dibatalkan';if(sval==='completed')return 'Selesai';if(sval==='ongoing'&&e.end){return 'Sedang berlangsung • '+Math.max(0,Math.ceil((en-today)/86400000))+' hari tersisa'}if(sval==='ongoing')return 'Hari ini';return Math.ceil((s-today)/86400000)+' hari lagi'}
 function isTba(text){return /TBA|belum diumumkan/i.test(text||'')}
 function card(e){const s=statusOf(e);const rpcClass=isTba(e.rpc)?'tba':'';return `<article class="card"><div class="head"><div><h3>${e.name}</h3><div class="sub">${e.category} • ${e.year}</div></div><div class="badges"><span class="badge ${s}">${statusLabel(s)}</span>${e.target?'<span class="badge target">TARGET UTAMA</span>':''}</div></div><div class="grid"><div class="item"><small>Race / Challenge</small><b>${e.date}</b></div><div class="item"><small>Waktu</small><b>${e.time}</b></div><div class="item"><small>Lokasi</small><b>${e.location}</b></div><div class="item"><small>Race Pack Collection</small><b class="${rpcClass}">${e.rpc}</b></div><div class="item"><small>Benefit / Race Pack</small><b>${e.pack}</b></div><div class="item"><small>Countdown</small><b>${countdown(e)}</b></div></div><div class="note">${e.note}</div>${e.missing?.length?`<div class="missing">⚠️ Belum lengkap: ${e.missing.join(', ')}</div>`:''}</article>`}
