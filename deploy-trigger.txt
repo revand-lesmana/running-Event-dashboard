@@ -1,0 +1,1 @@
+Trigger GitHub Pages deployment for dashboard v2.4.2.
