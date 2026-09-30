@@ -34,14 +34,110 @@ body{font-size:15px;background:var(--bg)}.app{max-width:none;padding:0;margin:0}
 @media(max-width:900px){.sidebar{display:none}.workspace{margin:0;padding:14px 12px 88px}.topbar{align-items:flex-start}.brand small,.refresh-label{display:none}.user-tools{max-width:220px}.board-overview{grid-template-columns:1fr 1fr}.hero{grid-column:1/-1}.hero-grid{grid-template-columns:1fr}.board-overview .kpi{display:block!important}.board-overview .kpi:nth-of-type(3),.board-overview .kpi:nth-of-type(4){display:none!important}.race-board{grid-template-columns:repeat(4,82vw);scroll-snap-type:x proximity}.board-column{scroll-snap-align:start}.support-grid{grid-template-columns:1fr}.board-help{display:none}.fab{display:none}.mobile-nav{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;left:8px;right:8px;bottom:8px;z-index:20;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 12px 34px rgba(15,23,42,.16);padding:5px}.mobile-nav a,.mobile-nav button{border:0;background:transparent;text-decoration:none;color:#475569;text-align:center;padding:7px 2px;font-size:9px;font-weight:800}.mobile-nav span{display:block;font-size:16px;margin-bottom:1px}}
 @media(max-width:560px){.welcome h1{font-size:24px}.welcome p{display:none}.user-tools .cloud-status{display:none}.board-overview{grid-template-columns:1fr 1fr}.hero{padding:16px}.hero h1{font-size:21px}.board-shell{padding:11px}.race-board{grid-template-columns:repeat(4,86vw)}.board-overview .kpi{padding:12px}.kpi strong{font-size:21px}.toolbar{padding:10px}.board-shell-head{align-items:flex-start}}
 @media print{.sidebar,.toolbar,.fab,.mobile-nav,.support-grid,.user-tools{display:none!important}.workspace{margin:0;padding:0}.race-board{grid-template-columns:repeat(2,1fr);overflow:visible}.board-column{break-inside:avoid}.hero{color:#000}.board-shell{box-shadow:none}}
+
+/* Mobile-first refinement — phone is the primary view */
+@media(max-width:900px){
+  html{scroll-padding-bottom:86px}
+  body{font-size:15px;background:#f5f7fb}
+  .app{min-height:100vh}
+  .sidebar{position:static;display:block;width:auto;background:#0b1e38;padding:10px 12px;border-radius:0;color:#fff}
+  .sidebar-brand,.sidebar nav{display:none}
+  .sidebar-user{margin:0;padding:0;border:0;display:flex;align-items:center;gap:10px}
+  .sidebar-user label{margin:0;white-space:nowrap;font-size:11px;color:#aebdd2}
+  .sidebar-user select{min-width:0;flex:1;height:42px;border-radius:12px;padding:0 12px;font-size:14px;font-weight:850;background:#173654;border:1px solid #365575;color:#fff}
+  .sidebar-user small{display:none}
+  .workspace{margin:0;padding:14px 12px 92px}
+  .topbar{display:grid;grid-template-columns:1fr auto;align-items:start;gap:10px;margin-bottom:12px}
+  .welcome .eyebrow{font-size:9px;letter-spacing:.12em}
+  .welcome h1{font-size:24px;line-height:1.12;margin:4px 0 2px}
+  .welcome p{display:none}
+  .user-tools{gap:6px;max-width:none;justify-content:flex-end}
+  .user-tools .cloud-status,.user-tools .btn-soft{display:none}
+  .user-tools .btn-blue{min-height:42px;border-radius:12px;padding:9px 12px;font-size:12px}
+  .toolbar{margin:0 0 12px;padding:10px 0;background:transparent;border:0;border-radius:0}
+  .toolbar-row{display:block}
+  .filter-stack{gap:7px}
+  .filters{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding:0 1px 2px;scroll-snap-type:x proximity}
+  .filters::-webkit-scrollbar{display:none}
+  .filter{flex:0 0 auto;min-height:36px;padding:7px 11px;font-size:10px;scroll-snap-align:start}
+  #statusFilters{display:none}
+  .today{margin-top:6px;padding:0 2px;font-size:10px}
+  .board-overview{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:12px}
+  .hero{grid-column:1/-1;padding:16px;border-radius:16px}
+  .hero-grid{grid-template-columns:1fr;gap:12px}
+  .hero h1{font-size:21px;margin:5px 0 6px}
+  .hero-meta{font-size:11px;line-height:1.5}
+  .hero-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:11px}
+  .hero-actions .btn{min-height:42px;padding:8px 9px;font-size:11px}
+  .countdown-box{display:grid;grid-template-columns:1fr 1fr;gap:4px 10px;padding:11px 12px;border-radius:12px}
+  .countdown-box small{font-size:9px}
+  .countdown-box strong{grid-column:1;font-size:20px;margin:1px 0}
+  .countdown-box>span{grid-column:1;font-size:10px}
+  .hero-rpc{grid-column:2;grid-row:1/4;margin:0;padding:0 0 0 10px;border-top:0;border-left:1px solid #e0e8f3}
+  .hero-rpc span{display:block;margin-top:4px;font-size:10px;line-height:1.4}
+  .board-overview .kpi{display:block!important;padding:11px 12px;border-radius:13px}
+  .board-overview .kpi:nth-of-type(3),.board-overview .kpi:nth-of-type(4){display:none!important}
+  .kpi .accent{font-size:8px;margin-bottom:5px}
+  .kpi strong{font-size:22px}
+  .kpi span{font-size:10px;margin-top:5px}
+  .board-shell{padding:10px 0 11px;border-radius:16px;overflow:hidden}
+  .board-shell-head{align-items:center;padding:0 11px;margin-bottom:10px}
+  .board-shell-head h2{font-size:18px}
+  .board-shell-head p{font-size:10px;line-height:1.4;max-width:250px}
+  .board-shell-head .count{font-size:9px;padding:6px 8px;white-space:nowrap}
+  .race-board{display:grid;grid-template-columns:repeat(4,calc(100vw - 46px));gap:10px;overflow-x:auto;padding:0 11px 8px;scroll-snap-type:x mandatory;scroll-padding-left:11px;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .race-board::-webkit-scrollbar{display:none}
+  .board-column{min-width:0;min-height:300px;padding:10px;border-radius:14px;scroll-snap-align:start;scroll-snap-stop:always}
+  .board-column-head{position:sticky;top:0;z-index:2;background:#f7f9fc;margin:-2px -2px 9px;padding:5px 4px 9px}
+  .board-column-title{font-size:13px}
+  .board-count{font-size:10px}
+  .board-list{gap:8px}
+  .board-card{padding:12px;border-radius:13px}
+  .board-card:hover{transform:none}
+  .board-card h3{font-size:15px}
+  .board-card-date{font-size:11px}
+  .board-card-meta{font-size:11px;margin-top:9px}
+  .board-card-result{font-size:11px;padding:8px 9px}
+  .board-card-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+  .board-card-actions button{min-height:42px;font-size:11px;border-radius:10px}
+  .board-card-actions button:only-child{grid-column:1/-1}
+  .support-grid{display:block;margin-top:12px}
+  .ai-assistant{padding:14px;border-radius:14px}
+  .ai-head{gap:8px}.ai-head h2{font-size:16px}.ai-head p{font-size:11px}
+  .ai-compose{grid-template-columns:1fr}.ai-compose textarea{min-height:92px;font-size:13px}.ai-compose button{width:100%;min-height:42px}
+  .board-help{display:none}
+  .footer{display:none}
+  .fab{display:none}
+  .mobile-nav{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;left:8px;right:8px;bottom:8px;z-index:40;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:17px;box-shadow:0 12px 34px rgba(15,23,42,.18);padding:5px}
+  .mobile-nav a,.mobile-nav button{min-height:50px;border:0;background:transparent;text-decoration:none;color:#526071;text-align:center;padding:6px 2px;font-size:9px;font-weight:850;border-radius:12px}
+  .mobile-nav button{background:#eaf2ff;color:#1d4ed8}
+  .mobile-nav span{display:block;font-size:17px;line-height:1.1;margin-bottom:2px}
+  .modal{align-items:flex-end;padding:0}
+  .modal-box{width:100%;max-height:92vh;border-radius:22px 22px 0 0;padding:18px 14px 24px}
+  .modal-box h3{font-size:19px}
+  .upload-grid,.detail-grid,.gallery{grid-template-columns:1fr}
+  .field input,.field select{min-height:44px;font-size:16px}
+  .submit-btn{width:100%;min-height:46px}
+  .close{width:40px;height:40px}
+}
+@media(max-width:380px){
+  .workspace{padding-left:9px;padding-right:9px}
+  .sidebar{padding-left:9px;padding-right:9px}
+  .race-board{grid-template-columns:repeat(4,calc(100vw - 34px));padding-left:8px;padding-right:8px}
+  .topbar{grid-template-columns:1fr}
+  .user-tools{justify-content:stretch}
+  .user-tools .btn-blue{width:100%}
+}
+
 </style>
+<!-- user_selector_visible_on_mobile -->
 </head>
 <body>
 <div class="app"><aside class="sidebar"><a class="sidebar-brand" href="#overview"><span class="brand-icon">↗</span><span>Run Dashboard<small>Race Board · Option 04</small></span></a><nav aria-label="Navigasi utama"><a href="#overview" class="selected">◫ <span>Overview</span></a><a href="#currentColumn">● <span>Current</span></a><a href="#futureColumn">◷ <span>Future</span></a><a href="#finishedColumn">✓ <span>Finished</span></a><a href="#canceledColumn">× <span>Canceled</span></a></nav><div class="sidebar-user"><label for="userSelect">Pilih pengguna</label><select id="userSelect" class="user-select" onchange="setUser(this.value)" aria-label="Pilih pengguna"></select><small>Empat status race dalam satu board.</small></div></aside>
 <main class="workspace" id="overview"><header class="topbar"><div class="welcome"><div class="eyebrow">RUNNING EVENT DASHBOARD</div><h1>Race Board · <span id="welcomeName">Revand</span></h1><p>Bandingkan Current, Future, Finished, dan Canceled dalam satu tampilan.</p></div><div class="user-tools"><span id="cloudStatus" class="cloud-status">Connecting…</span><button class="btn btn-soft" onclick="loadCloudData()">🔄 <span class="refresh-label">Refresh</span></button><button class="btn btn-blue" onclick="openUpload()">Upload evidence</button></div></header>
 <section class="toolbar"><div class="toolbar-row"><div class="filter-stack"><div class="filters" id="yearFilters"></div><div class="filters" id="statusFilters"></div><div class="filters" id="distanceFilters"></div></div><div class="today" id="today"></div></div></section>
 <div class="board-overview"><section class="hero" id="home"><div class="hero-grid"><div><div class="eyebrow">Next Event</div><h1 id="spotlightName">Loading next event…</h1><div id="spotlightMeta" class="hero-meta">Menyiapkan jadwal event berikutnya…</div><div class="hero-actions" id="spotlightActions"></div></div><div class="countdown-box"><small>Countdown</small><strong id="spotlightCountdown">—</strong><span id="spotlightDate">—</span><div class="hero-rpc"><small>Race Pack Collection</small><span id="spotlightRpc">—</span></div></div></div></section><div class="kpi"><div class="accent">Milestone</div><strong id="finished5kStat">—</strong><span>5K Finished</span></div><div class="kpi"><div class="accent">Next level</div><strong id="finished10kStat">—</strong><span>10K Finished</span></div><div class="kpi"><div class="accent">Race history</div><strong id="finishedTotalStat">—</strong><span>Total Finished</span></div><div class="kpi"><div class="accent">Schedule</div><strong id="activeStat">—</strong><span>Active Events</span></div></div>
-<section class="board-shell" id="eventsSection"><div class="board-shell-head"><div><h2>Race Board</h2><p>Klik event untuk membuka detail lengkap. Filter di atas berlaku untuk seluruh board.</p></div><span class="count">Option 04</span></div><div class="race-board"><section class="board-column board-current" id="currentColumn"><div class="board-column-head"><div class="board-column-title"><span class="board-dot"></span>Current</div><span class="board-count" id="currentCount">0</span></div><div class="board-list" id="currentEvents"></div></section><section class="board-column board-future" id="futureColumn"><div class="board-column-head"><div class="board-column-title"><span class="board-dot"></span>Future</div><span class="board-count" id="futureCount">0</span></div><div class="board-list" id="futureEvents"></div></section><section class="board-column board-finished" id="finishedColumn"><div class="board-column-head"><div class="board-column-title"><span class="board-dot"></span>Finished</div><span class="board-count" id="finishedCount">0</span></div><div class="board-list" id="finishedEvents"></div></section><section class="board-column board-canceled" id="canceledColumn"><div class="board-column-head"><div class="board-column-title"><span class="board-dot"></span>Canceled</div><span class="board-count" id="canceledCount">0</span></div><div class="board-list" id="canceledEvents"></div></section></div></section>
+<section class="board-shell" id="eventsSection"><div class="board-shell-head"><div><h2>Race Board</h2><p>Klik event untuk membuka detail lengkap. Filter di atas berlaku untuk seluruh board.</p></div><span class="count">Swipe →</span></div><div class="race-board"><section class="board-column board-current" id="currentColumn"><div class="board-column-head"><div class="board-column-title"><span class="board-dot"></span>Current</div><span class="board-count" id="currentCount">0</span></div><div class="board-list" id="currentEvents"></div></section><section class="board-column board-future" id="futureColumn"><div class="board-column-head"><div class="board-column-title"><span class="board-dot"></span>Future</div><span class="board-count" id="futureCount">0</span></div><div class="board-list" id="futureEvents"></div></section><section class="board-column board-finished" id="finishedColumn"><div class="board-column-head"><div class="board-column-title"><span class="board-dot"></span>Finished</div><span class="board-count" id="finishedCount">0</span></div><div class="board-list" id="finishedEvents"></div></section><section class="board-column board-canceled" id="canceledColumn"><div class="board-column-head"><div class="board-column-title"><span class="board-dot"></span>Canceled</div><span class="board-count" id="canceledCount">0</span></div><div class="board-list" id="canceledEvents"></div></section></div></section>
 <div class="support-grid"><section class="ai-assistant" id="aiAssistant"><div class="ai-head"><div><h2>✨ Run AI Assistant</h2><p>Beta tester: Revand. Kirim request perubahan event/dashboard dari sini.</p></div><span class="ai-beta">BETA</span></div><div class="ai-compose"><textarea id="aiPrompt" maxlength="4000" placeholder="Contoh: Tambahkan event XYZ 5K untuk saya, status registered..."></textarea><button id="aiSendButton" class="btn btn-blue" onclick="submitAiRequest()">Kirim</button></div><div class="ai-status" id="aiStatus">Request disimpan untuk ditinjau. Respons AI otomatis belum aktif.</div><div class="ai-history" id="aiHistory"></div></section><aside class="board-help"><h3>Board actions</h3><p>Upload evidence tetap tersedia. Detail event, race-pack collection, link event, proof, certificate, dan catatan dapat dibuka dari setiap card.</p><div class="utility-actions"><button class="btn btn-dark" onclick="copyWA()">📋 Copy recap WhatsApp</button><button class="btn btn-soft" onclick="window.print()">🖨️ Print / Save PDF</button></div></aside></div><footer class="footer"><span>Run Dashboard · Race Board</span><span>Current · Future · Finished · Canceled</span></footer></main></div><button class="fab" onclick="openUpload()">＋ Add Run Result</button><nav class="mobile-nav"><a href="#currentColumn"><span>●</span>Current</a><a href="#futureColumn"><span>◷</span>Future</a><button onclick="openUpload()"><span>＋</span>Add</button><a href="#finishedColumn"><span>✓</span>Finished</a><a href="#canceledColumn"><span>×</span>Canceled</a></nav>
 
 <div class="modal" id="uploadModal" onclick="closeUpload(event)"><div class="modal-box" id="uploadPanel"><button class="close" onclick="closeUpload(event,true)">×</button><h3>＋ Add Run Result</h3><div class="modal-sub">Simpan hasil, proof, dan certificate ke Supabase.</div><div class="upload-grid"><div class="field"><label>User</label><select id="uploadUser"></select></div><div class="field"><label>Event</label><select id="uploadEvent"></select></div><div class="field"><label>Actual distance</label><input id="actualDistance" placeholder="Contoh: 5.09 km"></div><div class="field"><label>Finish time</label><input id="finishTime" placeholder="Contoh: 49:23"></div><div class="field"><label>Avg pace</label><input id="avgPace" placeholder="Contoh: 9:42/km"></div><div class="field"><label>📸 Proof / screenshot</label><input id="proofFiles" type="file" accept="image/jpeg,image/png,image/webp" multiple><div class="field-help">Maks. 10 MB per file.</div></div><div class="field"><label>🏅 Certificate</label><input id="certificateFiles" type="file" accept="image/jpeg,image/png,image/webp,application/pdf" multiple><div class="field-help">Image atau PDF, maks. 10 MB per file.</div></div></div><div id="uploadMessage" class="upload-note">Data hasil dan file akan tersinkron untuk Revand, Andries, dan Sylvia.</div><button id="submitButton" class="submit-btn" onclick="saveSubmission()">Simpan hasil run</button></div></div>
