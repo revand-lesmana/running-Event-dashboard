@@ -165,6 +165,7 @@ function userDistance(e,user=selectedUser){return e.userDistance?.[user]||e.dist
 function registrationStatus(e,user=selectedUser){return e.registration?.[user]||null}
 function isTarget(e,user=selectedUser){return !!e.userTarget?.[user]}
 function eventNote(e,user=selectedUser){return e.userNote?.[user]||e.note||'—'}
+function eventDocument(e,user=selectedUser){return e.userDocument?.[user]||null}
 function registrationLabel(s){return({registered:'REGISTERED',interested:'INTERESTED',confirmed:'CONFIRMED',canceled:'CANCELED'})[s]||String(s||'').toUpperCase()}
 function effectiveStatus(e,user=selectedUser){return registrationStatus(e,user)==='canceled'?'canceled':statusOf(e)}
 function resultText(r){if(r.result==='finished')return['FINISHED',r.actualDistance,r.resultTime].filter(Boolean).join(' • ');return(r.result||'pending').toUpperCase()}
